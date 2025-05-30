@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Επαλήθευση Email</title>
+Παρακαλούμε εισάγετε το έγκυρο email σας παρακάτω, ώστε να σας στείλουμε έναν <strong>μοναδικό κωδικό OTP (One Time Password)</strong>.<br>
+Με τον κωδικό αυτό, θα επαληθεύσουμε την ταυτότητά σας πριν συνεχίσετε στη φόρμα αίτησης.</p>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2></h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Αποστολή OTP</button>
+    </form>
+</body>
+</html>
